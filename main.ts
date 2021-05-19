@@ -1,6 +1,36 @@
 namespace SpriteKind {
     export const Flash = SpriteKind.create()
 }
+info.onCountdownEnd(function () {
+    game.over(false)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    if (otherSprite == Hot_Dog_1) {
+        tiles.placeOnRandomTile(Hot_Dog_1, assets.tile`Hot Dog Restaurant`)
+    }
+    if (otherSprite == Hot_Dog_2) {
+        tiles.placeOnRandomTile(Hot_Dog_2, assets.tile`Hot Dog Restaurant`)
+    }
+    if (otherSprite == Hot_Dog_3) {
+        tiles.placeOnRandomTile(Hot_Dog_3, assets.tile`Hot Dog Restaurant`)
+    }
+    if (otherSprite == Hot_Dog_4) {
+        tiles.placeOnRandomTile(Hot_Dog_4, assets.tile`Hot Dog Restaurant`)
+    }
+    if (otherSprite == Hot_Dog_5) {
+        tiles.placeOnRandomTile(Hot_Dog_5, assets.tile`Hot Dog Restaurant`)
+    }
+    info.changeScoreBy(1)
+    if (info.score() == 5) {
+        game.over(true)
+        music.jumpUp.play()
+    }
+})
+let Hot_Dog_5: Sprite = null
+let Hot_Dog_4: Sprite = null
+let Hot_Dog_3: Sprite = null
+let Hot_Dog_2: Sprite = null
+let Hot_Dog_1: Sprite = null
 let Don_Toño: Sprite = null
 tiles.setTilemap(tilemap`Conjunto`)
 let Rocky = sprites.create(assets.image`Rocky`, SpriteKind.Player)
@@ -27,8 +57,15 @@ Don_Toño = sprites.create(img`
     . . . f f f f f f . . . 
     . . . f f . . f f . . . 
     `, SpriteKind.Enemy)
-let Hot_dog = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
-Hot_dog = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
-Hot_dog = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
-Hot_dog = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
-Hot_dog = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
+Hot_Dog_1 = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
+tiles.placeOnRandomTile(Hot_Dog_1, assets.tile`myTile8`)
+Hot_Dog_2 = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
+tiles.placeOnRandomTile(Hot_Dog_2, assets.tile`myTile3`)
+Hot_Dog_3 = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
+tiles.placeOnRandomTile(Hot_Dog_3, assets.tile`myTile2`)
+Hot_Dog_4 = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
+tiles.placeOnRandomTile(Hot_Dog_4, assets.tile`myTile3`)
+Hot_Dog_5 = sprites.create(assets.image`Hot Dog`, SpriteKind.Food)
+tiles.placeOnRandomTile(Hot_Dog_5, assets.tile`myTile2`)
+info.startCountdown(30)
+let Score = 0
